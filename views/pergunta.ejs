@@ -1,0 +1,52 @@
+<%- include ("./partials/header") %>
+
+<body>
+  <%- include ("./partials/navbar") %>
+  <div class="container">
+ 
+        <h3><%=pergunta.titulo%></h1>
+        <hr>
+        <h6><%=pergunta.descricao %></h6>
+<h6>Id da questão: <%=pergunta.id%></h6>
+
+<h4>Respostas</h4>
+
+
+
+<% respostas.forEach((x)=>{ %>
+<p><%=x.resposta %></p>
+<hr>
+
+<%})%>
+
+<form action="/responder" method="post">
+    
+    <label for="pergunta">Resposta:</label>
+    <input type="text " name="pergunta" value="<%=pergunta.id%>" hidden>
+    <textarea name="corpo" id="text" cols="30" rows="2" class="form-control mt-2 p-1" oninput="contarCaracteres()" placeholder="Sua resposta..." ></textarea>
+  
+    <p class="text-end">Caracteres: <span id="count"></span></p>
+    <button type="submit" class=" btn btn-primary btn-sm mt-2">Responder</button>
+
+   <a href="/"class="btn btn-secondary btn-sm mt-2">Voltar</a>
+</form>
+       
+    </div>
+
+  <%- include("./partials/footer") %>
+
+
+ <script>
+  function contarCaracteres(){
+    const limiteLength = 200
+    var msg =document.getElementById('text')
+    var mensagemConteudo = msg.value
+   if(mensagemConteudo.length>limiteLength){
+    msg.value = mensagemConteudo.slice(0,limiteLength)
+   }
+
+    document.getElementById('count').textContent = msg.value.length
+
+  }
+ </script>
+</body>

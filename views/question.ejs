@@ -1,0 +1,55 @@
+
+<%- include ("./partials/header.ejs") %>
+<body>
+  <%- include ("./partials/navbar") %>
+    <div class="container">
+      <div class="card" id="form-card">
+        <div class="card-header" style="height: 3rem; line-height: 3rem;">
+          <h3>Perguntar</h2>
+        </div>
+
+        <div class="card-body">
+          <form action="/save" method="post" class="form-control border-0">
+            <label for="">Título</label>
+            <input
+              type="text"
+              class="form-control"
+              name="titulo"
+              id=""
+              placeholder="Titulo"
+            />
+            <br />
+            <label for="">Descrição</label>
+            <textarea
+              name="descricao"
+              class="form-control"
+              id="text"
+              cols="10"
+              rows="2"
+              oninput="contarCaracteres()"
+              placeholder="Descreva sua pergutnta:"
+            ></textarea>
+            <p class="text-end">Caracteres:<span></span></p>
+            <button class="btn btn-primary m-3 btn-sm">Perguntar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+<%- include ("./partials/footer.ejs") %>
+
+<script>
+  function contarCaracteres(){
+    const limiteLength = 200
+    var msg =document.getElementById('text')
+    var mensagemConteudo = msg.value
+   if(mensagemConteudo.length>limiteLength){
+    msg.value = mensagemConteudo.slice(0,limiteLength)
+   }
+
+    var span = document.querySelector('span')
+    span.textContent = " "+msg.value.length
+
+  }
+ </script>
+  </body>
+

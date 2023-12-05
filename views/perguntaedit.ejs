@@ -1,0 +1,79 @@
+<%- include ("./partials/header") %>
+
+<body>
+  <%- include ("./partials/navbar") %>
+  <div class="container">
+    <div class="card" id="form-card">
+      <div class="card-header" style="height: 3rem; line-height: 3rem;">
+        <h3>Reformule sua pergunta:</h2>
+      </div>
+
+      <div class="">
+        <form action="/edicao/<%=pergunta.id%>" method="post" class="form-control">
+          <label for="">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            name="titulo"
+            value="<%=pergunta.titulo%>"
+            id=""
+            disabled
+          />
+          <br />
+          <label for="">Descrição</label>
+          <textarea
+            name="descricao"
+            id="text"
+            class="form-control"
+            cols="10"
+            rows="2"
+            disabled
+            oninput="contarCaracteres()"
+          
+          ><%=pergunta.descricao%>
+        </textarea>
+       <p class="text-end">Caracteres:<span></span></p> 
+
+
+        <a class="btn btn-secondary btn-sm" onclick="habilitarCampos()" id="btn">Editar</a>
+        
+        <button type="submit" class="btn btn-success m-3 btn-sm">Salvar</button>
+        </form>
+
+  </div>
+  
+
+  <%- include("./partials/footer") %>
+
+  <script>
+    
+  
+
+// habilitar edição
+    function habilitarCampos() {
+        // Obtém a referência aos elementos textarea e input
+        var textarea = document.querySelector('textarea');
+        var input = document.querySelector('input');
+
+        // Define o atributo "disabled" para true para desabilitar os campos
+       // textarea.disabled = false;
+       // input.disabled = false;
+       textarea.disabled = !textarea.disabled;
+    input.disabled = !input.disabled;
+
+    }
+
+
+    function contarCaracteres(){
+    const limiteLength = 200
+    var msg =document.getElementById('text')
+    var mensagemConteudo = msg.value
+   if(mensagemConteudo.length>limiteLength){
+    msg.value = mensagemConteudo.slice(0,limiteLength)
+   }
+
+    document.querySelector('span').textContent = msg.value.length
+
+  }
+</script>
+</body>

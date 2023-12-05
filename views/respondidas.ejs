@@ -1,0 +1,28 @@
+<%- include ("./partials/header") %>
+
+<body>
+  <%- include ("./partials/navbar") %>
+  <div class="container mt-1">
+    <h6>Questão de número: 0<%=pergunta.id %></h6>
+    <h6><%=pergunta.descricao %></h6>
+
+    <input type="text " name="pergunta" value="<%=pergunta.id%>" hidden />
+
+    <div class="card  border border-0">
+      <h4 class="text-center">Respostas</h4>
+      <div class="card-footer">
+        <% respostas.forEach((x)=>{ %>
+        <p><%=x.resposta %></p>
+        <hr style="border: 2px solid rgb(12, 20, 28)">
+
+        <%})%>
+      </div>
+    </div>
+    
+    <a href="/pergunta/<%=pergunta.id %>"><button class="btn btn-primary btn-sm mt-2">Responder</button></a> 
+    <a href="/"
+      ><button class="btn btn-secondary btn-sm mt-2">Voltar</button></a>
+  </div>
+
+  <%- include("./partials/footer") %>
+</body>

@@ -1,0 +1,42 @@
+
+<%- include ("./partials/header") %>
+
+<body>
+<%- include ("./partials/navbar") %>
+    
+    <div class="container">  
+        <h2 class="text-center">Perguntas</h1>  
+            <a href="/perguntar"><button class="btn btn-success">Perguntar</button></a> 
+
+            <br><br>
+        <% perguntas.forEach(pergunta=>{ %>
+    
+            <div class="card mb-1">
+            <div class="card-body" style="height: 110px;">
+                 <a href="/respondidas/<%=pergunta.id%>" id="destaque"><h5><%= pergunta.titulo %></h5></a>
+                 <p><b><%= pergunta.descricao%></b></p>
+                 <p style="font-size: x-small; color: rgb(36, 57, 100); text-align: end;">Criado em: <%= pergunta.createdAt %></p>
+        
+            </div>
+            <div class="card-footer">
+         
+                <a href="/editar/<%=pergunta.id%>"><button class ="btn btn-secondary btn-sm">Editar</button></a>
+                <button class ="btn btn-danger btn-sm"  onclick="confirmDelete('<%= pergunta.id %>')">Excluir</button>
+            </div>
+            </div>
+           
+       <% }) %>
+    </div>
+
+<%- include("./partials/footer") %>
+</body>
+<script>
+    function confirmDelete(perguntaId) {
+        var r = confirm("Você quer mesmo excluir a pergunta?");
+        if (r == true) {
+            // If the user confirms, navigate to the delete URL for this pergunta
+            window.location.href = "/excluir/" + perguntaId;
+            alert("Questão excluida.")
+        }
+    }
+    </script>
