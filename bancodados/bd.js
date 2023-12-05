@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
- const conexao = new Sequelize('teste', 'root', 'felipe05',{dialect:'mysql',host:'localhost' })
+ const conexao = new Sequelize('teste', 'root', 'database',{dialect:'mysql',host:'localhost' })
 
 
 
