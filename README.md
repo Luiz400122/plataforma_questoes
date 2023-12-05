@@ -1,13 +1,13 @@
-### Plataforma de questões
+# Plataforma de questões
 
 
-# Aplicação construida em Node.js com uso de mysql e EJS.
+### Aplicação construida em Node.js com uso de mysql e EJS.
 
-# Para executar a aplicação :
+### Para executar a aplicação :
  $ git clone https://github.com/Luiz400122/plataforma_questoes.git
 
-# Instalção dos pacotes : npm install
+### Instalção dos pacotes : npm install
 
-# Para execução :
+### Para execução :
 $ npm run start
 
